@@ -19,7 +19,13 @@ public class Input {
 	 * @return int recogido por teclado.
 	 */
 	public static int readInt() {
-		return new Scanner(System.in).nextInt();
+		int inNum = 0;
+		try {
+			inNum = new Scanner(System.in).nextInt();
+		} catch (InputMismatchException m) {
+			System.out.println("ese no es un número válido. ");
+		}
+		return inNum;
 	}
 
 	/**
@@ -27,6 +33,12 @@ public class Input {
 	 * @return String recogido por teclado.
 	 */
 	public static String readString() {
-		return new Scanner(System.in).nextLine();
+		String inText = "";
+		try {
+			inText = new Scanner(System.in).nextLine();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return inText;
 	}
 }

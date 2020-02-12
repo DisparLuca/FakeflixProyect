@@ -39,7 +39,7 @@ public class Database implements DAO<Film, Integer> {
 	static {
 		try {
 			// you need to do something like below instead of Logger.getLogger(....);
-			// Logger.getLogger se usaba hasta la versión 2.7 y muchos ejemplos de internet
+			// Logger.getLogger se usaba hasta la versiÃ³n 2.7 y muchos ejemplos de internet
 			// estan asi
 			logger = LogManager.getLogger(Database.class);
 		} catch (Throwable e) {
@@ -79,7 +79,7 @@ public class Database implements DAO<Film, Integer> {
 			} // if
 
 		} catch (SQLException e) {
-			throw new DAOException("Excepción SQL", e);
+			throw new DAOException("ExcepciÃ³n SQL", e);
 
 		} finally {
 
@@ -89,7 +89,7 @@ public class Database implements DAO<Film, Integer> {
 				resultSet.close();
 
 			} catch (SQLException e) {
-				throw new DAOException("Excepción SQL", e);
+				throw new DAOException("ExcepciÃ³n SQL", e);
 			}
 
 		} // finally
@@ -125,7 +125,8 @@ public class Database implements DAO<Film, Integer> {
 
 			archivo = new File("./FakeFlix/settings/peliculas_cat.txt");
 			fr = new FileReader(archivo);
-			br = new BufferedReader(fr);
+			br = new BufferedReader(
+				    new InputStreamReader(new FileInputStream(archivo),"utf-8"));
 
 			String linea = null;
 
@@ -160,20 +161,20 @@ public class Database implements DAO<Film, Integer> {
 	
 	/**
 	 * @author David
-	 * método para listar las pelis ordenadas por número de visitas. FUERTE contribución de Alvaro.
+	 * mÃ©todo para listar las pelis ordenadas por nÃºmero de visitas. FUERTE contribuciÃ³n de Alvaro.
 	 */	
 	@Override
 	public void getMostViewedFilms() throws DAOException {
 		
 		PreparedStatement stmt = null;
 		try {
-			logger.trace("generando lista de películas ordenadas por número de visionados...");
+			logger.trace("generando lista de pelÃ­culas ordenadas por nÃºmero de visionados...");
 		stmt = connection.prepareStatement(getMostViewedFilms);
 		ResultSet rs = stmt.executeQuery();
 		logger.trace("imprimiendo la lista: ");
 		while (rs.next()){
 			
-			System.out.println("[Película: " + rs.getString("name") + " --- número de visitas: " + rs.getInt("cantidadVisitas") + "]");
+			System.out.println("[PelÃ­cula: " + rs.getString("name") + " --- nÃºmero de visitas: " + rs.getInt("cantidadVisitas") + "]");
 		}
 		} catch (SQLException e) {
 			e.printStackTrace(System.out);
@@ -266,7 +267,7 @@ public class Database implements DAO<Film, Integer> {
 	}
 
 	/**
-	 * @author Pablo introducci�n de pel�culas dadas por el cliente en la BBDD.
+	 * @author Pablo introducción de películas dadas por el cliente en la BBDD.
 	 * @throws DAOException
 	 */
 	@Override
@@ -276,7 +277,7 @@ public class Database implements DAO<Film, Integer> {
 
 		System.out.println("Introduzca el nombre de la pelicula:");
 		pelicula.setName(Input.readString());
-		System.out.println("Introduzca el a�o de la pelicula:");
+		System.out.println("Introduzca el año de la pelicula:");
 		pelicula.setYear((Input.readInt()));
 		System.out.println("Introduzca el genero de la pelicula:");
 		pelicula.setCategory(Input.readString());
@@ -285,7 +286,7 @@ public class Database implements DAO<Film, Integer> {
 	}
 
 	/**
-	 * @author Pablo Muñoz
+	 * @author Pablo MuÃ±oz
 	 * Metodo que obtiene las peliculas que no ha visto un usuario dado por parametro
 	 * @param idUser codigo de usuario
 	 */
@@ -321,7 +322,7 @@ public class Database implements DAO<Film, Integer> {
 	
 	
 	/**
-	 * @author Pablo Muñoz Álvaro Muñoz
+	 * @author Pablo MuÃ±oz Ãlvaro MuÃ±oz
 	 * Metodo que obtiene las 5 peliculas mas valoradas por los usuarios
 	 * */
 	public List<String> getMostLikedFilms() throws DAOException{

@@ -5,7 +5,7 @@ import DAO.DAOException;
 /**
  * Esta interfaz permite mostrar el menu principal de la aplcación
  **/
-
+//comentario
 public interface IFakeflix {
 
 	public void verMenu();

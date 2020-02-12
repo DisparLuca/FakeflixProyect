@@ -28,7 +28,7 @@ public class Main {
 	public static void main(String[] args) throws DAOException {
 
 		logger.info("empieza");
-
+		// comentario
 		// comentario
 		IFakeflix f = new IFakeflix();
 		f.opcionesInicio();

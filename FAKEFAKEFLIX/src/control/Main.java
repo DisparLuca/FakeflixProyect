@@ -30,7 +30,8 @@ public class Main {
 		logger.info("empieza");
 
 		// comentario
-
+		IFakeflix f = new IFakeflix();
+		f.opcionesInicio();
 		DAO<Film, Integer> dao = FactoryDAO.getInstance().getDAO();
 		// dao.get(1);
 

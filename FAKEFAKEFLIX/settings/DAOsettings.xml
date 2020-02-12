@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+
+        <!-- DAO -->
+	<entry key="set_dao">JDBC</entry>
+    
+        <!-- JDBC -->
+    <entry key="mysql_db_url">jdbc:mysql://10.90.36.105:3306/</entry>
+    <entry key="mysql_db_name">proyecto1</entry>
+    <entry key="mysql_db_properties_ssl">?useSSL=false</entry>
+    <entry key="mysql_db_properties_servertimezone">&amp;serverTimezone=GMT</entry>
+    
+    <entry key="mysql_user">remoto3</entry>
+    <entry key="mysql_pass">root</entry>
+    
+</properties>
